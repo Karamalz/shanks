@@ -65,7 +65,11 @@ class LoginController extends Controller
         }
 
         if (!$this->userService->isUserExist($request->email)) {
-            return redirect(route('register'));
+            $this->userService->registerUser([
+                'name' => 'test123', //因登入沒有傳入使用者名稱，且此欄位可重複，故直接隨意給一個測試名稱
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+            ]);
         }
 
         if ($this->attemptLogin($request)) {

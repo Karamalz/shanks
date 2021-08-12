@@ -20,4 +20,9 @@ class UserService
 
         return !$users->isEmpty();
     }
+
+    public function registerUser($userInfo)
+    {
+        return $this->userRepository->createUser($userInfo);
+    }
 }

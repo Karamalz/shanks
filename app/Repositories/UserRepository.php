@@ -10,4 +10,9 @@ class UserRepository
     {
         return User::where($query)->get();
     }
+
+    public function createUser($userInfo)
+    {
+        return User::create($userInfo);
+    }
 }
